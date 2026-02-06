@@ -3,6 +3,7 @@ import api from "../api/axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
+
 const Dashboard = () => {
   const navigate = useNavigate();
 
@@ -94,11 +95,17 @@ const Dashboard = () => {
         {groups.length === 0 && <p>No groups yet</p>}
 
         {groups.map((group) => (
-          <div key={group.id} className="group-card">
+          <div
+            key={group.id}
+            className="group-card"
+            onClick={() => navigate(`/dashboard/groups/${group.id}`)}
+            style={{ cursor: "pointer" }}
+          >
             <h5>{group.name}</h5>
             <p>Group ID: {group.id}</p>
           </div>
         ))}
+
       </div>
 
     </div>

@@ -25,7 +25,7 @@ function App() {
         <Route path="/dashboard" element={<DashboardLayout />}>
 
           <Route index element={<Dashboard />} />
-          <Route path="groups" element={<Groups />} />
+          <Route path="groups/:id" element={<Groups />} />
           <Route path="create-group" element={<CreateGroup />} />
 
         </Route>
