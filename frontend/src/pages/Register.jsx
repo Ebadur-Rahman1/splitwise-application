@@ -41,8 +41,8 @@ const Register = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <form onSubmit={handleSubmit} className="card p-4">
+    <div className="auth-wrapper">
+      <form onSubmit={handleSubmit} className="auth-card" autoComplete="off">
         <h3>Register</h3>
 
         <input

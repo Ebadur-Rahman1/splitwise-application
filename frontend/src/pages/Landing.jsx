@@ -3,23 +3,20 @@ import "./Landing.css";
 
 export default function Landing() {
   return (
-    <div className="landing-bg d-flex align-items-center justify-content-center">
+    <div className="auth-wrapper">
+      <div className="auth-card">
+        <h1>Splitwise App</h1>
+        <p>Split expenses easily with friends</p>
 
-      <div className="text-center container">
-
-        <h1 className="display-3 fw-bold">Splitwise App</h1>
-        <p className="lead">Split expenses easily with friends</p>
-
-        <div className="mt-4">
-          <Link to="/login" className="btn btn-success me-3">
-            Login
+        <div style={{ marginTop: "20px" }}>
+          <Link to="/login">
+            <button style={{ marginBottom: "10px" }}>Login</button>
           </Link>
 
-          <Link to="/register" className="btn btn-outline-light">
-            Register
+          <Link to="/register">
+            <button>Register</button>
           </Link>
         </div>
-
       </div>
     </div>
   );
