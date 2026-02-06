@@ -46,3 +46,294 @@ body {
 .auth-card button:hover {
   background: #5a67d8;
 }
+
+.dashboard-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-card {
+  width: 600px;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logout-btn {
+  background: #ff4d4d;
+  border: none;
+  padding: 8px 15px;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.balance-box {
+  background: #f4f4f4;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.create-group form {
+  display: flex;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.create-group input {
+  flex: 1;
+  padding: 8px;
+}
+
+.create-group button {
+  padding: 8px 15px;
+  background: #667eea;
+  border: none;
+  color: white;
+  border-radius: 6px;
+}
+
+.group-list {
+  margin-top: 25px;
+}
+
+.group-item {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.group-item:hover {
+  background: #e0e7ff;
+}
+
+/* added for dashboard styling */
+.dashboard-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #333;
+}
+
+.dashboard-navbar {
+  background: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.dashboard-navbar h2 {
+  margin: 0;
+}
+
+.username {
+  margin-right: 15px;
+  font-weight: 500;
+}
+
+.logout-btn {
+  background: #ff4d4d;
+  border: none;
+  padding: 6px 14px;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dashboard-content {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Balance Cards */
+
+.balance-section {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.balance-card {
+  flex: 1;
+  min-width: 250px;
+  padding: 25px;
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+}
+
+.balance-card.owe {
+  background: #ff6b6b;
+}
+
+.balance-card.get {
+  background: #1dd1a1;
+}
+
+/* Create Group */
+
+.create-group-box {
+  margin-top: 30px;
+}
+
+.create-group-box form {
+  display: flex;
+  gap: 10px;
+}
+
+.create-group-box input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+}
+
+.create-group-box button {
+  padding: 10px 20px;
+  border: none;
+  background: #222f3e;
+  color: white;
+  border-radius: 6px;
+}
+
+/* Groups */
+
+.group-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.group-card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.group-card:hover {
+  transform: translateY(-5px);
+}
+
+
+/* ========== Layout ========== */
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* Sidebar */
+
+.sidebar {
+  width: 240px;
+  background: linear-gradient(180deg, #2b2d42, #1e1e2f);
+  color: white;
+  padding: 30px 20px;
+  transition: width 0.3s ease;
+}
+
+.logo {
+  margin-bottom: 40px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar a {
+  color: #cfcfcf;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  background: #2f2f45;
+  color: white;
+}
+
+.sidebar a.active {
+  background: #667eea;
+  color: white;
+}
+
+/* Main Content */
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Topbar */
+
+.topbar {
+  background: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.topbar h3 {
+  margin: 0;
+}
+
+/* Content Area */
+
+.content-area {
+  padding: 30px;
+}
+
+
+
+/* Sidebar collapse */
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar.collapsed a {
+  text-align: center;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.balance-card.total {
+  background: #3b82f6;
+}

@@ -1,26 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-export default function Sidebar() {
+export default function Sidebar({ collapsed }) {
+
+  const location = useLocation();
+
   return (
-    <div className="bg-dark text-white vh-100 p-3" style={{width:"220px"}}>
+    <div className={`sidebar ${collapsed ? "collapsed" : ""}`}>
 
-      <h4 className="mb-4">Splitwise</h4>
+      <h2 className="logo">
+        {collapsed ? "S" : "Splitwise"}
+      </h2>
 
-      <ul className="nav flex-column">
+      <nav>
+        <Link
+          to="/dashboard"
+          className={location.pathname === "/dashboard" ? "active" : ""}
+        >
+          {collapsed ? "D" : "Dashboard"}
+        </Link>
 
-        <li className="nav-item">
-          <Link className="nav-link text-white" to="/dashboard">
-            Dashboard
-          </Link>
-        </li>
+        <Link
+          to="/dashboard/groups"
+          className={location.pathname.includes("groups") ? "active" : ""}
+        >
+          {collapsed ? "G" : "Groups"}
+        </Link>
+      </nav>
 
-        <li className="nav-item">
-          <Link className="nav-link text-white" to="/groups">
-            Groups
-          </Link>
-        </li>
-
-      </ul>
     </div>
   );
 }

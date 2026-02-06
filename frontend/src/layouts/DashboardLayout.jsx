@@ -1,17 +1,20 @@
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
+import Navbar from "../components/Navbar";
 
 const DashboardLayout = () => {
+
+  const [collapsed, setCollapsed] = useState(false);
+
   return (
-    <div className="d-flex">
+    <div className="app-layout">
 
-      <Sidebar />
+      <Sidebar collapsed={collapsed} />
 
-      <div className="flex-grow-1">
-        <Navbar />
-
-        <div className="container mt-4">
+      <div className="main-content">
+        <Navbar toggleSidebar={() => setCollapsed(!collapsed)} />
+        <div className="content-area">
           <Outlet />
         </div>
       </div>

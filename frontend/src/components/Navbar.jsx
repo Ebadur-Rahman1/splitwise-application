@@ -1,21 +1,36 @@
 import { useAuth } from "../auth/AuthContext";
+import { useNavigate } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar({ toggleSidebar }) {
 
-  const { logout } = useAuth();
+  const { setUser } = useAuth(); // keep context clean
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Remove token locally (JWT is stateless)
+    localStorage.removeItem("token");
+
+    // Clear user from context if available
+    if (setUser) setUser(null);
+
+    // Redirect cleanly
+    navigate("/login");
+  };
 
   return (
-    <nav className="navbar navbar-light bg-light px-4">
+    <div className="topbar">
 
-      <h5 className="m-0">Dashboard</h5>
+      <div className="topbar-left">
+        <button className="menu-btn" onClick={toggleSidebar}>
+          ☰
+        </button>
+        <h3>Dashboard</h3>
+      </div>
 
-      <button
-        className="btn btn-danger"
-        onClick={logout}
-      >
+      <button className="logout-btn" onClick={handleLogout}>
         Logout
       </button>
 
-    </nav>
+    </div>
   );
 }
