@@ -52,7 +52,9 @@ const Dashboard = () => {
     }
   };
 
-  const netBalance = balance.owed_to_you - balance.you_owe;
+  const youOwe = Number(balance.you_owe || 0);
+  const youReceive = Number(balance.owed_to_you || 0);
+  const netBalance = youReceive - youOwe;
 
   return (
     <div className="dashboard-content">
@@ -62,12 +64,12 @@ const Dashboard = () => {
 
         <div className="balance-card owe">
           <h4>You Need to Pay</h4>
-          <p>₹ {balance.you_owe}</p>
+          <p>₹ {youOwe}</p>
         </div>
 
         <div className="balance-card get">
           <h4>You Will Receive</h4>
-          <p>₹ {balance.owed_to_you}</p>
+          <p>₹ {youReceive}</p>
         </div>
 
         <div className="balance-card total">
