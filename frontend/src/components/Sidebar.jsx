@@ -18,13 +18,7 @@ export default function Sidebar({ collapsed }) {
         >
           {collapsed ? "D" : "Dashboard"}
         </Link>
-
-        <Link
-          to="/dashboard/groups"
-          className={location.pathname.includes("groups") ? "active" : ""}
-        >
-          {collapsed ? "G" : "Groups"}
-        </Link>
+        
       </nav>
 
     </div>

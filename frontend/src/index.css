@@ -16,7 +16,7 @@ body {
   padding: 40px;
   border-radius: 12px;
   width: 350px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
@@ -59,7 +59,7 @@ body {
   background: white;
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 .dashboard-header {
@@ -133,7 +133,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard-navbar h2 {
@@ -155,9 +155,9 @@ body {
 }
 
 .dashboard-content {
-  padding: 40px 20px;
-  max-width: 1000px;
-  margin: auto;
+  padding: 40px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Balance Cards */
@@ -168,22 +168,22 @@ body {
   flex-wrap: wrap;
 }
 
-.balance-card {
+/* .balance-card {
   flex: 1;
   min-width: 250px;
   padding: 25px;
   border-radius: 15px;
   color: white;
   text-align: center;
-}
+} */
 
-.balance-card.owe {
+/* .balance-card.owe {
   background: #ff6b6b;
-}
+} */
 
-.balance-card.get {
+/* .balance-card.get {
   background: #1dd1a1;
-}
+} */
 
 /* Create Group */
 
@@ -220,18 +220,18 @@ body {
   gap: 20px;
 }
 
-.group-card {
+/* .group-card {
   background: white;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   transition: 0.3s;
   cursor: pointer;
 }
 
 .group-card:hover {
   transform: translateY(-5px);
-}
+} */
 
 
 /* ========== Layout ========== */
@@ -244,9 +244,17 @@ body {
 
 /* Sidebar */
 
-.sidebar {
+/* .sidebar {
   width: 240px;
   background: linear-gradient(180deg, #2b2d42, #1e1e2f);
+  color: white;
+  padding: 30px 20px;
+  transition: width 0.3s ease;
+} */
+
+.sidebar {
+  width: 250px;
+  background: linear-gradient(180deg, #1e1e2f, #151521);
   color: white;
   padding: 30px 20px;
   transition: width 0.3s ease;
@@ -290,13 +298,22 @@ body {
 
 /* Topbar */
 
-.topbar {
+/* .topbar {
   background: white;
   padding: 15px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+} */
+
+.topbar {
+  background: white;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
 
 .topbar h3 {
@@ -306,7 +323,8 @@ body {
 /* Content Area */
 
 .content-area {
-  padding: 30px;
+  padding: 40px;
+  flex: 1;
 }
 
 
@@ -334,6 +352,35 @@ body {
   align-items: center;
 }
 
-.balance-card.total {
+/* .balance-card.total {
   background: #3b82f6;
+} */
+
+.balance-card {
+  flex: 1;
+  min-width: 260px;
+  padding: 30px;
+  border-radius: 18px;
+  color: white;
+  text-align: left;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  transition: 0.3s ease;
+}
+
+.balance-card:hover {
+  transform: translateY(-5px);
+}
+
+
+.group-card {
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.group-card:hover {
+  transform: translateY(-6px);
 }
