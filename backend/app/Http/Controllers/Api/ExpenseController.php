@@ -14,7 +14,12 @@ class ExpenseController extends Controller
     // List expenses of a group
     public function index($groupId)
     {
-        $group = Group::with('expenses.splits')->findOrFail($groupId);
+        // This was old logic which did not returned paid by user details
+        // $group = Group::with('expenses.splits')->findOrFail($groupId); 
+
+        // return paid by user details
+        $group = Group::with(['expenses.splits', 'expenses.paidByUser'])
+              ->findOrFail($groupId);
 
         // Optional: check membership
         if (!$group->users()->where('user_id', auth('api')->id())->exists()) {

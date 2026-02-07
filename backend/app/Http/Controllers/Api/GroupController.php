@@ -8,6 +8,8 @@ use App\Models\Expense;
 use App\Models\ExpenseSplit;
 use Illuminate\Http\Request;
 
+use App\Models\User;
+
 class GroupController extends Controller
 {
     // List my groups
@@ -51,7 +53,7 @@ class GroupController extends Controller
     {
         $group = Group::findOrFail($id);
 
-        if (! $group->users()->where('user_id', auth('api')->id())->exists()) {
+        if (!$group->users()->where('user_id', auth('api')->id())->exists()) {
             return response()->json(['error' => 'You are not in this group'], 403);
         }
 
@@ -80,7 +82,7 @@ class GroupController extends Controller
     {
         $group = Group::with('users')->findOrFail($groupId);
 
-        if (! $group->users()->where('users.id', auth('api')->id())->exists()) {
+        if (!$group->users()->where('users.id', auth('api')->id())->exists()) {
             return response()->json(['error' => 'Not a group member'], 403);
         }
 
@@ -158,13 +160,55 @@ class GroupController extends Controller
             $debtors[$i]['amount'] -= $pay;
             $creditors[$j]['amount'] -= $pay;
 
-            if ($debtors[$i]['amount'] == 0) $i++;
-            if ($creditors[$j]['amount'] == 0) $j++;
+            if ($debtors[$i]['amount'] == 0)
+                $i++;
+            if ($creditors[$j]['amount'] == 0)
+                $j++;
         }
 
         return response()->json([
             'group_id' => $groupId,
             'settlements' => $settlements
+        ]);
+    }
+
+    // Add group member by admin
+    public function addMember(Request $request, $id)
+    {
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+
+        $group = Group::findOrFail($id);
+
+        // Only group creator can add members
+        if ($group->created_by !== auth('api')->id()) {
+            return response()->json([
+                'error' => 'Only group creator can add members'
+            ], 403);
+        }
+
+        // Check user exists
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return response()->json([
+                'error' => 'User not found'
+            ], 404);
+        }
+
+        // Check already member
+        if ($group->users()->where('user_id', $user->id)->exists()) {
+            return response()->json([
+                'error' => 'User already in group'
+            ], 400);
+        }
+
+        // Attach user
+        $group->users()->attach($user->id);
+
+        return response()->json([
+            'message' => 'Member added successfully'
         ]);
     }
 }
